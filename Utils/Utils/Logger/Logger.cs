@@ -115,7 +115,7 @@ namespace Utils.Logger
         /// Writes important messages to the log.
         /// </summary>
         /// <param name="messages">Messages that will be written.</param>
-        public void ImportantMessge(params string[] messages)
+        public void ImportantMessage(params string[] messages)
         {
             foreach (var message in messages)
                 this.ImportantMessage(message);
