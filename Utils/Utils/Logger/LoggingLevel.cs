@@ -3,7 +3,7 @@
     /// <summary>
     /// Determins types of messages that will be written in the log file.
     /// </summary>
-    internal enum LoggingLevel
+    public enum LoggingLevel
     {
         /// <summary>
         /// Nothing will be written to the log file.

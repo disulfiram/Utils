@@ -34,7 +34,7 @@ namespace Utils.Logger
         /// <param name="logLocation">Location of the log file.</param>
         /// <param name="loggingLevel">Level of logs that will be written to the log file. <seealso cref="LoggingLevel"/></param>
         /// <param name="overwrite">If set to false will create new log file each time the program is run.</param>
-        internal Logger(string logLocation, LoggingLevel loggingLevel, bool overwrite)
+        public Logger(string logLocation, LoggingLevel loggingLevel, bool overwrite)
         {
             this._logLocation = logLocation;
             this._loggingLevel = loggingLevel;
@@ -54,7 +54,7 @@ namespace Utils.Logger
         /// Writes error message to the log.
         /// </summary>
         /// <param name="message">Message that will be written.</param>
-        internal void Error(string message)
+        public void Error(string message)
         {
             if (this._loggingLevel >= LoggingLevel.Errors)
                 using (var file = File.AppendText(this._logFile))
@@ -67,7 +67,7 @@ namespace Utils.Logger
         /// Writes error messages to the log.
         /// </summary>
         /// <param name="messages">Messages that will be written.</param>
-        internal void Error(params string[] messages)
+        public void Error(params string[] messages)
         {
             foreach (var message in messages)
                 this.Error(message);
@@ -77,7 +77,7 @@ namespace Utils.Logger
         /// Writes warning message to the log.
         /// </summary>
         /// <param name="message">Message that will be written.</param>
-        internal void Warning(string message)
+        public void Warning(string message)
         {
             if (this._loggingLevel >= LoggingLevel.Warning)
                 using (var file = File.AppendText(this._logFile))
@@ -90,7 +90,7 @@ namespace Utils.Logger
         /// Writes warning messages to the log.
         /// </summary>
         /// <param name="messages">Messages that will be written.</param>
-        internal void Warning(params string[] messages)
+        public void Warning(params string[] messages)
         {
             foreach (var message in messages)
                 this.Warning(message);
@@ -100,7 +100,7 @@ namespace Utils.Logger
         /// Writes important message to the log.
         /// </summary>
         /// <param name="message">Message that will be written.</param>
-        internal void ImportantMessage(string message)
+        public void ImportantMessage(string message)
         {
             if (this._loggingLevel >= LoggingLevel.ImportantMessages)
             {
@@ -115,7 +115,7 @@ namespace Utils.Logger
         /// Writes important messages to the log.
         /// </summary>
         /// <param name="messages">Messages that will be written.</param>
-        internal void ImportantMessge(params string[] messages)
+        public void ImportantMessge(params string[] messages)
         {
             foreach (var message in messages)
                 this.ImportantMessage(message);
@@ -125,7 +125,7 @@ namespace Utils.Logger
         /// Writes info message to the log.
         /// </summary>
         /// <param name="message">Message that will be written.</param>
-        internal void Info(string message)
+        public void Info(string message)
         {
             if (this._loggingLevel >= LoggingLevel.All)
             {
@@ -140,7 +140,7 @@ namespace Utils.Logger
         /// Writes info messages to the log.
         /// </summary>
         /// <param name="messages">Messages that will be written.</param>
-        internal void Info(params string[] messages)
+        public void Info(params string[] messages)
         {
             foreach (var message in messages)
                 this.Info(message);
