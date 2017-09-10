@@ -51,6 +51,27 @@ namespace Utils.Logger
         }
 
         /// <summary>
+        /// Writes error message to the log. Significantly more verbose than <see cref="Error(string)"/> method.
+        /// </summary>
+        /// <param name="ex">Exception to be logged.</param>
+        public void Exception(Exception ex)
+        {
+            if (this._loggingLevel >= LoggingLevel.Errors)
+            {
+                using (var file = File.AppendText(this._logFile))
+                {
+                    file.WriteLine(FormatMessage(ex.Message, MessageType.Error));
+                    file.WriteLine(ex.StackTrace);
+                }
+
+                if (ex.InnerException != null)
+                {
+                    this.Exception(ex.InnerException);
+                }
+            }
+        }
+
+        /// <summary>
         /// Writes error message to the log.
         /// </summary>
         /// <param name="message">Message that will be written.</param>
@@ -115,7 +136,7 @@ namespace Utils.Logger
         /// Writes important messages to the log.
         /// </summary>
         /// <param name="messages">Messages that will be written.</param>
-        public void ImportantMessge(params string[] messages)
+        public void ImportantMessage(params string[] messages)
         {
             foreach (var message in messages)
                 this.ImportantMessage(message);
